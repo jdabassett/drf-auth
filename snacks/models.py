@@ -1,3 +1,24 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
-# Create your models here.
+
+class Snack(models.Model):
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    name = models.CharField(max_length=150)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["owner", "-created_at"]
+
+    def __str__(self):
+        return self.name
+
+
+class SnackCollection(models.Model):
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    snacks = models.ManyToManyField("snacks.Snack", blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
