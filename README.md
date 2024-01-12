@@ -60,13 +60,17 @@ response = requests.request("<method>", reqUrl, data=payload,  headers=headersLi
 | v1/snacks/collection/create/ | delete request                | True  | DELETE | True         | False         | False               | ""                                                                             |
 
 
-* Request: Make a post request to endpoint:'token/' endpoint with username:'admin' and password:'1234'. 
+#### Request descriptions:
+
+1. Request: Make a post request to endpoint:'token/' endpoint with username:'admin' and password:'1234'. 
   * Response: Should return refresh and access tokens.
-  
-* Request: Use returned refresh token along with username and password to make a post request to endpoint:'token/refresh'.
+
+
+2. Request: Use returned refresh token along with username and password to make a post request to endpoint:'token/refresh'.
   * Response: Should return new access token.
+
   
-* Request: Use access token to make post request to endpoint:'v1/snacks/create/' along with following json in the body.
+3. Request: Use access token to make post request to endpoint:'v1/snacks/create/' along with following json in the body.
 ```json
 {
   "owner": 1,
@@ -76,10 +80,11 @@ response = requests.request("<method>", reqUrl, data=payload,  headers=headersLi
 ```
   * Response: Should return record with id, created_at, and updated_at.
 
-* Request: Use access token to make a get request to the endpoint:'v1/snacks/create/'.
+4. Request: Use access token to make a get request to the endpoint:'v1/snacks/create/'.
   * Response: Should return list with 'pear' record.
 
-* Request: Use access token to make a put request to the endpoint: 'v1/snacks/create/1' along with the following json in the body.
+  
+5. Request: Use access token to make a put request to the endpoint: 'v1/snacks/create/1' along with the following json in the body.
 ```json
 {
   "owner": 1,
@@ -89,5 +94,5 @@ response = requests.request("<method>", reqUrl, data=payload,  headers=headersLi
 ```
   * Response: Should return updated record.
 
-* Request: Use access token to make a delete request to the endpoint:'v1/snacks/create/1'.
+6. Request: Use access token to make a delete request to the endpoint:'v1/snacks/create/1'.
   * Response: Should return '204 No Content'.
